@@ -8,8 +8,8 @@ This repository serves as the **landing page and general documentation** for the
 
 The complete project is divided into **two independent repositories** that together form an integrated system:
 
-* **Frontend:** — `[Citizen Reports Frontend](https://github.com/katy-paola/citizen-reports-frontend)`
-* **Backend:** — `[Citizen Reports Backend](https://github.com/katy-paola/citizen-reports-backend)`
+* **Frontend:** — [Citizen Reports Frontend](https://github.com/katy-paola/citizen-reports-frontend)
+* **Backend:** — [Citizen Reports Backend](https://github.com/katy-paola/citizen-reports-backend)
 
 ---
 
@@ -119,7 +119,7 @@ To run the complete project locally, you must clone and run both repositories in
 ### Clone and run the Backend
 
 ```bash
-git clone [https://github.com/katy-paola/citizen-reports-backend](https://github.com/katy-paola/citizen-reports-backend)
+git clone https://github.com/katy-paola/citizen-reports-backend
 cd citizen-reports-backend
 npm install
 npm run dev
@@ -128,7 +128,7 @@ npm run dev
 ### Clone and run the Frontend
 
 ```bash
-git clone [https://github.com/katy-paola/citizen-reports-frontend](https://github.com/katy-paola/citizen-reports-frontend)
+git clone https://github.com/katy-paola/citizen-reports-frontend
 cd citizen-reports-frontend
 npm install
 npm run dev
