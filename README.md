@@ -57,7 +57,6 @@ Build a system composed of:
 * A **React frontend (v19.2.0)** consuming data using **TanStack Query v5**
 * Form validation using **react-hook-form** and **zod**
 * A **custom API** to expose and persist citizen reports
-* **Authentication** for admin user only
 
 ---
 
