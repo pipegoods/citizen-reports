@@ -91,7 +91,7 @@ Each citizen report contains at least the following fields:
   id: string;
   title: string;
   description: string;
-  status: 'pendiente' | 'en proceso' | 'resuelto';
+  status: 'pending' | 'process' | 'resolved';
   createdAt: string;
 }
 ```
