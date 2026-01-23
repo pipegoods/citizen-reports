@@ -104,7 +104,8 @@ The frontend consumes a REST API with at least the following endpoints:
 
 * `GET /api/reports` — Fetch reports (with pagination)
 * `POST /api/reports` — Create a new report
-* `PATCH /api/reports/:id` — Update report status (admin only)
+* `PUT /api/reports/:id` — Update report status (admin only)
+* `DELETE /api/reports/:id` — Delete a report (admin only)
 * `POST /api/auth/login` - Admin user only
 * `POST /api/auth/logout` - Admin user only
 * `GET /api/auth/session` - Admin user only
