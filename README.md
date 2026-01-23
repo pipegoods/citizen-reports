@@ -57,6 +57,7 @@ Build a system composed of:
 * A **React frontend (v19.2.0)** consuming data using **TanStack Query v5**
 * Form validation using **react-hook-form** and **zod**
 * A **custom API** to expose and persist citizen reports
+* **Admin authentication** (requires running the `seed-admin.ts` script in the `prisma` folder to create the initial admin user)
 
 ---
 
@@ -78,7 +79,7 @@ Build a system composed of:
 * NestJS
 * Prisma
 * PostgreSQL (Supabase)
-* Session-based authentication using **httpOnly cookies** and **JWT**
+* Session-based authentication using **httpOnly cookies** and **JWT** (admin only, seed with `prisma/seed-admin.ts`)
 
 ---
 
@@ -122,6 +123,8 @@ To run the complete project locally, you must clone and run both repositories in
 git clone https://github.com/katy-paola/citizen-reports-backend
 cd citizen-reports-backend
 npm install
+# Seed the admin user
+npx ts-node prisma/seed-admin.ts
 npm run dev
 ```
 
@@ -147,4 +150,4 @@ For specific details about implemented features, technical decisions, or future 
 
 ## 🏁 Conclusion
 
-This project represents a **functional MVP**, focused on modern development best practices using **React**, **NestJS**, **TanStack Query**, and **secure session-based authentication**.
+This project represents a **functional MVP**, focused on modern development best practices using **React**, **NestJS**, **TanStack Query**, and **secure session-based authentication for admin users only**.
