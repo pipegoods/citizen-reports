@@ -3,12 +3,18 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Request } from 'express';
 import { Strategy } from 'passport-jwt';
 
+interface JwtPayload {
+  sub: string;
+  role: string;
+}
+
 const cookieExtractor = (req: Request): string | null => {
   if (req.cookies && req.cookies.access_token) {
     return req.cookies.access_token as string;
   }
   return null;
 };
+
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor() {
@@ -18,7 +24,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  validate(payload: any) {
+  validate(payload: JwtPayload): JwtPayload {
     return payload;
   }
 }

@@ -9,14 +9,21 @@ import { FormContext, useFormContext } from "../context/formContext";
 import { useController } from "react-hook-form";
 import { FormFieldContext, useFormField } from "../context/formFieldContext";
 
-type FormWrapperProps = {
-  form: UseFormReturn<any>;
+type FormWrapperProps<T extends FieldValues = FieldValues> = {
+  form: UseFormReturn<T>;
   children: React.ReactNode;
 };
 
-const FormWrapper = ({ form, children }: FormWrapperProps) => {
+const FormWrapper = <T extends FieldValues>({
+  form,
+  children,
+}: FormWrapperProps<T>) => {
   return (
-    <FormContext.Provider value={{ form }}>{children}</FormContext.Provider>
+    <FormContext.Provider
+      value={{ form: form as UseFormReturn<FieldValues> }}
+    >
+      {children}
+    </FormContext.Provider>
   );
 };
 

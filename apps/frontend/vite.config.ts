@@ -2,12 +2,18 @@ import path from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 
+type ViteUserConfig = import("vite").UserConfig;
+type VitestTestConfig = import("vitest/config").UserWorkspaceConfig["test"];
+
 // https://vite.dev/config/
-export default defineConfig({
+const config: ViteUserConfig & { test?: VitestTestConfig } = {
   plugins: [react()],
   resolve: {
     alias: {
-      "@citizen-reports/shared": path.resolve(__dirname, "../../packages/shared/src"),
+      "@citizen-reports/shared": path.resolve(
+        __dirname,
+        "../../packages/shared/src",
+      ),
     },
   },
   test: {
@@ -23,5 +29,6 @@ export default defineConfig({
       },
     },
   },
-// eslint-disable-next-line @typescript-eslint/no-explicit-any -- test config is Vitest-only, Vite build ignores it
-} as any);
+};
+
+export default defineConfig(config);

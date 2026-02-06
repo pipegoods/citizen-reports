@@ -7,6 +7,14 @@ import Button from "../../shared/components/Button";
 import { Form } from "../../shared/components/FormWrapper";
 import { Input } from "../../shared/components/Input";
 
+function getErrorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  const api = error as { response?: { data?: { message?: string } } };
+  if (typeof api.response?.data?.message === "string")
+    return api.response.data.message;
+  return String(error);
+}
+
 export const LoginPage = () => {
   const { mutate: login, isPending, error } = useLogin();
   const navigate = useNavigate();
@@ -74,7 +82,7 @@ export const LoginPage = () => {
           </Button>
         </form>
       </Form>
-      {error && <p>{(error as any).response?.data?.message}</p>}
+      {error && <p>{getErrorMessage(error)}</p>}
     </section>
   );
 };
