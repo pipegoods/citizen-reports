@@ -1,0 +1,27 @@
+{
+  "name": "@citizen-reports/shared",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./types": "./dist/types.js",
+    "./schemas": "./dist/schemas.js",
+    "./constants": "./dist/constants.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "zod": "^3.23.0"
+  },
+  "peerDependencies": {
+    "zod": ">=3.23.0"
+  }
+}

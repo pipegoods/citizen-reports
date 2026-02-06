@@ -4,12 +4,63 @@ This repository serves as the **landing page and general documentation** for the
 
 ---
 
-## 🚀 Project Repositories
+## 🚀 Monorepo layout
 
-The complete project is divided into **two independent repositories** that together form an integrated system:
+This repository now contains both the **frontend** and **backend** as a single monorepo. The former standalone repositories (`citizen-reports-frontend` and `citizen-reports-backend`) have been moved into this repository under `apps/`.
 
-* **Frontend:** — [Citizen Reports Frontend](https://github.com/katy-paola/citizen-reports-frontend)
-* **Backend:** — [Citizen Reports Backend](https://github.com/katy-paola/citizen-reports-backend)
+Project structure (relevant parts):
+
+* `apps/frontend/` — React + Vite app (antes `citizen-reports-frontend`)
+* `apps/backend/` — NestJS + Prisma app (antes `citizen-reports-backend`)
+* `packages/` — place for shared packages (optional)
+* `pnpm-workspace.yaml`, `package.json` (root), `turbo.json`, `tsconfig.base.json` — monorepo configs
+
+---
+
+## ▶️ Running locally (monorepo)
+
+**Prerequisites:** Node.js (18+ recommended), `pnpm` (v8+ recommended)
+
+Install and bootstrap dependencies (from repo root; this installs all workspace packages):
+
+```bash
+pnpm install
+# or
+pnpm run bootstrap
+```
+
+Build the monorepo (required before first `pnpm run dev` so that `@citizen-reports/shared` is compiled):
+
+```bash
+pnpm run build
+```
+
+Start development for all apps in parallel (Turborepo). The first time, `predev` will build the shared package automatically:
+
+```bash
+pnpm run dev
+```
+
+Start individual apps (example, from repo root):
+
+```bash
+pnpm --filter frontend dev
+pnpm --filter backend dev
+```
+
+To seed the admin user for the backend (from repo root, after `pnpm install`):
+
+```bash
+cd apps/backend
+npx ts-node prisma/seed-admin.ts
+pnpm dev
+```
+
+Build all apps:
+
+```bash
+pnpm run build
+```
 
 ---
 

@@ -1,0 +1,23 @@
+{
+  "name": "citizen-reports",
+  "private": true,
+  "packageManager": "pnpm@10.28.2",
+  "workspaces": ["apps/*", "packages/*"],
+  "devDependencies": {
+    "turbo": "^2.3.0"
+  },
+  "scripts": {
+    "bootstrap": "pnpm install",
+    "dev": "turbo run dev --parallel",
+    "predev": "pnpm run build --filter @citizen-reports/shared",
+    "dev:frontend": "pnpm --filter frontend dev",
+    "dev:backend": "pnpm --filter backend dev",
+    "build": "turbo run build",
+    "build:frontend": "pnpm --filter frontend build",
+    "build:backend": "pnpm --filter backend build",
+    "lint": "turbo run lint",
+    "lint:frontend": "pnpm --filter frontend lint",
+    "lint:backend": "pnpm --filter backend lint",
+    "test": "turbo run test"
+  }
+}

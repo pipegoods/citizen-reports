@@ -1,0 +1,24 @@
+import { Injectable } from '@nestjs/common';
+import { PassportStrategy } from '@nestjs/passport';
+import { Request } from 'express';
+import { Strategy } from 'passport-jwt';
+
+const cookieExtractor = (req: Request): string | null => {
+  if (req.cookies && req.cookies.access_token) {
+    return req.cookies.access_token as string;
+  }
+  return null;
+};
+@Injectable()
+export class JwtStrategy extends PassportStrategy(Strategy) {
+  constructor() {
+    super({
+      jwtFromRequest: cookieExtractor,
+      secretOrKey: process.env.JWT_SECRET!,
+    });
+  }
+
+  validate(payload: any) {
+    return payload;
+  }
+}
