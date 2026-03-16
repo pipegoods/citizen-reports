@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { DEFAULT_PAGE_SIZE } from "@citizen-reports/shared";
+import { DEFAULT_PAGE_SIZE } from "@citizen-reports/shared/constants";
 import { getPageFromUrl } from "../utils/pagination";
 
 export const usePagination = () => {

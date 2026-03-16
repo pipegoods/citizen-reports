@@ -3,7 +3,7 @@
  */
 
 import { z } from "zod";
-import { REPORT_STATUS_VALUES } from "./constants.js";
+import { REPORT_STATUS_VALUES } from "./constants";
 
 export const createReportSchema = z.object({
   title: z

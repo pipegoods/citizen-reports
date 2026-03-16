@@ -5,5 +5,5 @@ import { REPORT_STATUS_VALUES } from '@citizen-reports/shared';
 
 export class UpdateReportDto extends PartialType(CreateReportDto) {
   @IsIn(REPORT_STATUS_VALUES)
-  status: (typeof REPORT_STATUS_VALUES)[number];
+  status!: (typeof REPORT_STATUS_VALUES)[number];
 }

@@ -5,16 +5,20 @@ import type {
   ReportsResponse,
   UpdateReportDto,
 } from "@citizen-reports/shared";
-import { API_REPORTS, DEFAULT_PAGE_SIZE } from "@citizen-reports/shared";
+import { API_REPORTS, DEFAULT_PAGE_SIZE } from "@citizen-reports/shared/constants";
 import { getCsrfToken } from "../shared/utils/csrf";
 
 export const reportApi = {
-  getReports: (page: number = 1, pageSize: number = DEFAULT_PAGE_SIZE) =>
+  getReports: (
+    page: number = 1,
+    pageSize: number = DEFAULT_PAGE_SIZE,
+  ) =>
     client.get<ReportsResponse>(API_REPORTS, {
       params: { page, pageSize },
     }),
 
-  getReportById: (id: number) => client.get<ReportEntity>(`${API_REPORTS}/${id}`),
+  getReportById: (id: number) =>
+    client.get<ReportEntity>(`${API_REPORTS}/${id}`),
 
   createReport: (payload: CreateReportDto) =>
     client.post<ReportEntity>(API_REPORTS, {
@@ -46,10 +50,13 @@ export const reportApi = {
     if (!csrfToken) {
       throw new Error("CSRF token missing to delete");
     }
-    return client.delete<ReportEntity>(`${API_REPORTS}/${id}`, {
-      headers: {
-        "x-csrf-token": csrfToken,
+    return client.delete<ReportEntity>(
+      `${API_REPORTS}/${id}`,
+      {
+        headers: {
+          "x-csrf-token": csrfToken,
+        },
       },
-    });
+    );
   },
 };
