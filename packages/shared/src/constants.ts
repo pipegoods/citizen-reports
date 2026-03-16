@@ -2,7 +2,7 @@
  * Shared constants for Citizen Reports (backend + frontend).
  */
 
-import type { ReportStatus } from "./types";
+import type { ReportStatus } from "./types.js";
 
 export const REPORT_STATUS_VALUES = [
   "pending",
